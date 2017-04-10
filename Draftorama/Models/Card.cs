@@ -13,13 +13,14 @@ namespace Draftorama.Models
         private Mana _castingCost;
         private string _imageFile;
         private IEnumerable<Mana> _manaCosts;
-        private int _totalRating;
+        private IEnumerable<string> _tags;
+        private double _totalRating;
 
         #endregion Fields
 
         #region Constructors
 
-        public Card(string nameIn, Rarity rarityIn, string setIn, IEnumerable<Types> typesIn, string imageIn, IEnumerable<Mana> manaCostsIn, int ratingIn)
+        public Card(string nameIn, Rarity rarityIn, string setIn, IEnumerable<Types> typesIn, string imageIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn, int ratingIn)
         {
             _cardName = nameIn;
             _cardRarity = rarityIn;
@@ -27,7 +28,12 @@ namespace Draftorama.Models
             _cardTypes = typesIn;
             _imageFile = imageIn;
             _manaCosts = manaCostsIn;
+            _tags = tagsIn;
             _totalRating = ratingIn;
+        }
+
+        public Card()
+        {
         }
 
         #endregion Constructors
@@ -62,7 +68,7 @@ namespace Draftorama.Models
         public string CardName
         {
             get { return _cardName; }
-            private set { _cardName = value; }
+            set { _cardName = value; }
         }
 
         public Rarity CardRarity
@@ -86,7 +92,7 @@ namespace Draftorama.Models
         public Mana CastingCost
         {
             get { return _castingCost; }
-            private set { _castingCost = value; }
+            set { _castingCost = value; }
         }
 
         public string ImageFile
@@ -101,7 +107,13 @@ namespace Draftorama.Models
             set { _manaCosts = value; }
         }
 
-        public int TotalRating
+        public IEnumerable<string> Tags
+        {
+            get { return _tags; }
+            set { _tags = value; }
+        }
+
+        public double TotalRating
         {
             get { return _totalRating; }
             set { _totalRating = value; }
@@ -119,9 +131,11 @@ namespace Draftorama.Models
 
             private int _blue;
 
-            private int[] _colorIdentity;
+            private double[] _colorIdentity;
 
             private int _colorless;
+
+            private int _convertedManaCost;
 
             private int _generic;
 
@@ -131,7 +145,7 @@ namespace Draftorama.Models
 
             private int _red;
 
-            private int _weight;
+            private double _weight;
 
             private int _white;
 
@@ -176,7 +190,7 @@ namespace Draftorama.Models
                 set { _blue = value; }
             }
 
-            public int[] ColorIdentity
+            public double[] ColorIdentity
             {
                 get { return _colorIdentity; }
                 set { _colorIdentity = value; }
@@ -186,6 +200,12 @@ namespace Draftorama.Models
             {
                 get { return _colorless; }
                 set { _colorless = value; }
+            }
+
+            public int ConvertedManaCost
+            {
+                get { return _convertedManaCost; }
+                set { _convertedManaCost = value; }
             }
 
             public ManaRelation CostType
@@ -212,7 +232,7 @@ namespace Draftorama.Models
                 set { _red = value; }
             }
 
-            public int Weight
+            public double Weight
             {
                 get { return _weight; }
                 set { _weight = value; }
