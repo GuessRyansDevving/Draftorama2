@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Draftorama", "Draftorama\Draftorama.csproj", "{826478DB-744D-452C-9090-E25FB04A2D04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSFileConverter", "JSFileConverter\JSFileConverter.csproj", "{A44F7CEE-CC3A-4D58-9DD9-834B8B2FF63D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{826478DB-744D-452C-9090-E25FB04A2D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{826478DB-744D-452C-9090-E25FB04A2D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{826478DB-744D-452C-9090-E25FB04A2D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44F7CEE-CC3A-4D58-9DD9-834B8B2FF63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44F7CEE-CC3A-4D58-9DD9-834B8B2FF63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44F7CEE-CC3A-4D58-9DD9-834B8B2FF63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44F7CEE-CC3A-4D58-9DD9-834B8B2FF63D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,11 +8,12 @@ namespace Draftorama.Models
 
         private string _cardName;
         private Rarity _cardRarity;
-        private string _cardSet;
         private IEnumerable<Types> _cardTypes;
         private Mana _castingCost;
+        private int _convertedManaCost;
         private string _imageFile;
-        private IEnumerable<Mana> _manaCosts;
+        private IEnumerable<Mana> _manaAssociations;
+        private IEnumerable<double> _ratings;
         private IEnumerable<string> _tags;
         private double _totalRating;
 
@@ -20,16 +21,15 @@ namespace Draftorama.Models
 
         #region Constructors
 
-        public Card(string nameIn, Rarity rarityIn, string setIn, IEnumerable<Types> typesIn, string imageIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn, int ratingIn)
+        public Card(string nameIn, Rarity rarityIn, IEnumerable<Types> typesIn, string imageIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn, IEnumerable<double> ratingsIn)
         {
             _cardName = nameIn;
             _cardRarity = rarityIn;
-            _cardSet = setIn;
             _cardTypes = typesIn;
             _imageFile = imageIn;
-            _manaCosts = manaCostsIn;
+            _manaAssociations = manaCostsIn;
             _tags = tagsIn;
-            _totalRating = ratingIn;
+            _ratings = ratingsIn;
         }
 
         public Card()
@@ -77,12 +77,6 @@ namespace Draftorama.Models
             set { _cardRarity = value; }
         }
 
-        public string CardSet
-        {
-            get { return _cardSet; }
-            set { _cardSet = value; }
-        }
-
         public IEnumerable<Types> CardTypes
         {
             get { return _cardTypes; }
@@ -95,16 +89,28 @@ namespace Draftorama.Models
             set { _castingCost = value; }
         }
 
+        public int ConvertedManaCost
+        {
+            get { return _convertedManaCost; }
+            set { _convertedManaCost = value; }
+        }
+
         public string ImageFile
         {
             get { return _imageFile; }
             set { _imageFile = value; }
         }
 
-        public IEnumerable<Mana> ManaCosts
+        public IEnumerable<Mana> ManaAssociations
         {
-            get { return _manaCosts; }
-            set { _manaCosts = value; }
+            get { return _manaAssociations; }
+            set { _manaAssociations = value; }
+        }
+
+        public IEnumerable<double> Ratings
+        {
+            get { return _ratings; }
+            set { _ratings = value; }
         }
 
         public IEnumerable<string> Tags
@@ -135,8 +141,6 @@ namespace Draftorama.Models
 
             private int _colorless;
 
-            private int _convertedManaCost;
-
             private int _generic;
 
             private int _green;
@@ -144,6 +148,8 @@ namespace Draftorama.Models
             private ManaRelation _manaRelation;
 
             private int _red;
+
+            private string _stringFormat;
 
             private double _weight;
 
@@ -202,12 +208,6 @@ namespace Draftorama.Models
                 set { _colorless = value; }
             }
 
-            public int ConvertedManaCost
-            {
-                get { return _convertedManaCost; }
-                set { _convertedManaCost = value; }
-            }
-
             public ManaRelation CostType
             {
                 get { return _manaRelation; }
@@ -232,6 +232,12 @@ namespace Draftorama.Models
                 set { _red = value; }
             }
 
+            public string StringFormat
+            {
+                get { return _stringFormat; }
+                set { _stringFormat = value; }
+            }
+
             public double Weight
             {
                 get { return _weight; }
@@ -245,6 +251,16 @@ namespace Draftorama.Models
             }
 
             #endregion Properties
+
+            #region Methods
+
+            public int calculateCMC()
+            {
+                int cost = this.Generic + this.Colorless + this.White + this.Blue + this.Black + this.Red + this.Green;
+                return cost;
+            }
+
+            #endregion Methods
         }
 
         #endregion Structs
