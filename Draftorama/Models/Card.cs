@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Draftorama.Models
 {
@@ -21,18 +22,22 @@ namespace Draftorama.Models
 
         #region Constructors
 
-        public Card(string nameIn, Rarity rarityIn, IEnumerable<Types> typesIn, string imageIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn, IEnumerable<double> ratingsIn)
+        public Card(string nameIn, IEnumerable<Types> typesIn, Rarity rarityIn, string imageIn,
+            IEnumerable<double> ratingsIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn)
         {
             _cardName = nameIn;
-            _cardRarity = rarityIn;
             _cardTypes = typesIn;
+            _cardRarity = rarityIn;
             _imageFile = imageIn;
-            _manaAssociations = manaCostsIn;
-            _tags = tagsIn;
             _ratings = ratingsIn;
+            _totalRating = _ratings.First();
+            _manaAssociations = manaCostsIn;
+            _castingCost = _manaAssociations.First();
+            _convertedManaCost = _castingCost.calculateCMC();
+            _tags = tagsIn;
         }
 
-        public Card()
+        private Card()
         {
         }
 

@@ -26,23 +26,23 @@ namespace Draftorama.Models
 
         #endregion Properties
 
+        //public void ExportToJSON(string setName)
+        //{
+        //    JsonSerializer js = new JsonSerializer();
+        //    using (var fileStream = new FileStream(String.Format(setName + ".json"), FileMode.OpenOrCreate))
+        //    using (var streamWriter = new StreamWriter(fileStream))
+        //    using (var jw = new JsonTextWriter(streamWriter))
+        //    {
+        //        string output = JsonConvert.SerializeObject(_cardsInSet, Formatting.Indented, new JsonSerializerSettings
+        //        {
+        //            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //        });
+
+        //        jw.WriteRawValue(output);
+        //    }
+        //}
+
         #region Methods
-
-        public void ExportToJSON(string setName)
-        {
-            JsonSerializer js = new JsonSerializer();
-            using (var fileStream = new FileStream(String.Format(setName + ".json"), FileMode.OpenOrCreate))
-            using (var streamWriter = new StreamWriter(fileStream))
-            using (var jw = new JsonTextWriter(streamWriter))
-            {
-                string output = JsonConvert.SerializeObject(_cardsInSet, Formatting.Indented, new JsonSerializerSettings
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
-
-                jw.WriteRawValue(output);
-            }
-        }
 
         public IEnumerable<Card> GetAllCards()
         {
@@ -183,31 +183,30 @@ namespace Draftorama.Models
 
         public Card ReadCard(string cardTextIn)
         {
-            Card newCard = new Card();
             string[] cardLineParts = cardTextIn.Split(';');
 
-            // Card Name
-            newCard.CardName = cardLineParts[0];
+            //newCard.CardName = cardLineParts[0];
 
-            newCard.CardTypes = ReadTypes(cardLineParts[1]);
+            //newCard.CardTypes = ReadTypes(cardLineParts[1]);
 
-            newCard.CardRarity = ReadRarity(cardLineParts[2]);
+            //newCard.CardRarity = ReadRarity(cardLineParts[2]);
 
-            newCard.ImageFile = cardLineParts[3];
+            //newCard.ImageFile = cardLineParts[3];
 
-            IEnumerable<double> ratings = ReadRatings(cardLineParts[4]);
-            newCard.TotalRating = ratings.First();
-            newCard.Ratings = ratings;
+            //IEnumerable<double> ratings = ReadRatings(cardLineParts[4]);
+            //newCard.TotalRating = ratings.First();
+            //newCard.Ratings = ratings;
 
-            IEnumerable<Card.Mana> manaAssoc = ReadManaAssociations(cardLineParts[5]);
-            newCard.CastingCost = manaAssoc.First();
-            newCard.ManaAssociations = manaAssoc;
+            //IEnumerable<Card.Mana> manaAssoc = ReadManaAssociations(cardLineParts[5]);
+            //newCard.CastingCost = manaAssoc.First();
+            //newCard.ManaAssociations = manaAssoc;
 
-            newCard.ConvertedManaCost = manaAssoc.First().calculateCMC();
+            //newCard.ConvertedManaCost = manaAssoc.First().calculateCMC();
 
-            newCard.Tags = ReadTags(cardLineParts[6]);
+            //newCard.Tags = ReadTags(cardLineParts[6]);
 
-            return newCard;
+            return new Card(cardLineParts[0], ReadTypes(cardLineParts[1]), ReadRarity(cardLineParts[2]), cardLineParts[3],
+                ReadRatings(cardLineParts[4]), ReadManaAssociations(cardLineParts[5]), ReadTags(cardLineParts[6]));
         }
 
         public IEnumerable<Card.Mana> ReadManaAssociations(string manaStringIn)
