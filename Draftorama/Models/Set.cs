@@ -10,29 +10,46 @@ namespace Draftorama.Models
 {
     public class Set
     {
-        #region Private Fields
+        #region Fields
 
         private List<Card> _cardsInSet;
         private string _setName;
+        private PackInfo _setPackInfo;
 
-        #endregion Private Fields
+        #endregion Fields
 
-        #region Public Constructors
+        #region Constructors
 
         public Set(string setNameIn)
         {
             _setName = setNameIn;
             _cardsInSet = new List<Card>();
+            SetPackInfo = new PackInfo(14,1,3,10);
         }
 
-        #endregion Public Constructors
+        #endregion Constructors
 
-        #region Public Properties
+        #region Properties
 
         public List<Card> CardsInSet
         {
             get { return _cardsInSet; }
             set { _cardsInSet = value; }
+        }
+
+        public List<Card> Commons
+        {
+            get { return _cardsInSet.Where(x => x.CardRarity == "Common").ToList(); }
+        }
+
+        public List<Card> Mythics
+        {
+            get { return _cardsInSet.Where(x => x.CardRarity == "Mythic").ToList(); }
+        }
+
+        public List<Card> Rares
+        {
+            get { return _cardsInSet.Where(x => x.CardRarity == "Rare").ToList(); }
         }
 
         public string SetName
@@ -41,9 +58,20 @@ namespace Draftorama.Models
             set { _setName = value; }
         }
 
-        #endregion Public Properties
+        public PackInfo SetPackInfo
+        {
+            get { return _setPackInfo; }
+            set { _setPackInfo = value; }
+        }
 
-        #region Public Methods
+        public List<Card> Uncommons
+        {
+            get { return _cardsInSet.Where(x => x.CardRarity == "Uncommon").ToList(); }
+        }
+
+        #endregion Properties
+
+        #region Methods
 
         public void ExportToJSON()
         {
@@ -65,6 +93,37 @@ namespace Draftorama.Models
             }
         }
 
-        #endregion Public Methods
+        #endregion Methods
+
+        #region Structs
+
+        public struct PackInfo
+        {
+            #region Constructors
+
+            public PackInfo(int maxCardsInPackIn = 14, int maxRaresInPackIn = 1, int maxUncommonsInPackIn = 3, int maxCommonsInPackIn = 10)
+            {
+                MaxCardsInPack = maxCardsInPackIn;
+                MaxRaresInPack = maxRaresInPackIn;
+                MaxUncommonsInPack = maxUncommonsInPackIn;
+                MaxCommonsInPack = maxCommonsInPackIn;
+            }
+
+            #endregion Constructors
+
+            #region Properties
+
+            public int MaxCardsInPack { get; private set; }
+
+            public int MaxCommonsInPack { get; private set; }
+
+            public int MaxRaresInPack { get; private set; }
+
+            public int MaxUncommonsInPack { get; private set; }
+
+            #endregion Properties
+        }
+
+        #endregion Structs
     }
 }

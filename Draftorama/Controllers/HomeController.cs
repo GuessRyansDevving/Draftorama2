@@ -9,7 +9,7 @@ namespace Draftorama.Controllers
 {
     public class HomeController : Controller
     {
-        #region Public Methods
+        #region Methods
 
         public IActionResult About()
         {
@@ -19,6 +19,7 @@ namespace Draftorama.Controllers
             //s.ImportFromTXT();
             //s.ExportToJSON();
             s.ImportFromJSON();
+            Pack p = new Pack(s);
 
             return View();
         }
@@ -40,6 +41,6 @@ namespace Draftorama.Controllers
             return View();
         }
 
-        #endregion Public Methods
+        #endregion Methods
     }
 }

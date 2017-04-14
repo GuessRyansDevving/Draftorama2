@@ -1,0 +1,602 @@
+[
+  {
+    "CardName": "Scavenging Ooze",
+    "CardRarity": "Rare",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 3.7,
+      "TotalRating": 3.7
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Scavenging_Ooze.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 1,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "1G",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "G",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 0, 0, 2, 0 ],
+      "ConvertedManaCost": 2,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Ooze", "AAbility", "GraveyardHate", "PlusCounterSelf", "LifeGain", "Money" ]
+  },
+  {
+    "CardName": "Sin Collector",
+    "CardRarity": "Uncommon",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.6,
+      "TotalRating": 2.6
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Sin_Collector.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 1,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 1,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "1WB",
+          "White": 1
+        }
+      ],
+      "ColorIdentity": [ 1, 0, 1, 0, 0, 0 ],
+      "ConvertedManaCost": 3,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Human", "Cleric", "ETB", "DiscardOpponentSpell", "Exile" ]
+  },
+  {
+    "CardName": "Arcane Sanctum",
+    "CardRarity": "Uncommon",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 3.0,
+      "TotalRating": 3.0
+    },
+    "CardTypes": [ "Land" ],
+    "ImageFile": "Images/MM3/Arcane_Sanctum.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "0",
+          "White": 0
+        },
+        {
+          "Black": 1,
+          "Blue": 1,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "WUB",
+          "White": 1
+        }
+      ],
+      "ColorIdentity": [ 1, 1, 1, 0, 0, 0 ],
+      "ConvertedManaCost": 0,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "TriLand", "Tapped", "Fixing" ]
+  },
+  {
+    "CardName": "Jungle Shrine",
+    "CardRarity": "Uncommon",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 3.0,
+      "TotalRating": 3.0
+    },
+    "CardTypes": [ "Land" ],
+    "ImageFile": "Images/MM3/Jungle_Shrine.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "0",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 1,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "WRG",
+          "White": 1
+        }
+      ],
+      "ColorIdentity": [ 1, 0, 0, 1, 1, 0 ],
+      "ConvertedManaCost": 0,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "TriLand", "Tapped", "Fixing" ]
+  },
+  {
+    "CardName": "Ground Assault",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 3.1,
+      "TotalRating": 3.1
+    },
+    "CardTypes": [ "Sorcery" ],
+    "ImageFile": "Images/MM3/Ground_Assault.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 1,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "RG",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 0, 1, 1, 0 ],
+      "ConvertedManaCost": 2,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Removal", "DirectDamage" ]
+  },
+  {
+    "CardName": "Pit Keeper",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 1.5,
+      "TotalRating": 1.5
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Pit_Keeper.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 1,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 1,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "1B",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 1, 0, 0, 0 ],
+      "ConvertedManaCost": 2,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Human", "Wizard", "ETB", "Graveyard", "RegrowCreaturePlayer" ]
+  },
+  {
+    "CardName": "Slaughterhorn",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.0,
+      "TotalRating": 2.0
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Slaughterhorn.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 2,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "2G",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 1,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "G",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 0, 0, 2, 0 ],
+      "ConvertedManaCost": 3,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Beast", "Bloodrush", "Pump" ]
+  },
+  {
+    "CardName": "Mist Raven",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.7,
+      "TotalRating": 2.7
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Mist_Raven.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 2,
+          "Colorless": 0,
+          "Generic": 2,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "2UU",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 2, 0, 0, 0, 0 ],
+      "ConvertedManaCost": 4,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Bird", "Flying", "ETB", "Bounce", "Tempo" ]
+  },
+  {
+    "CardName": "Vampire Aristocrat",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.1,
+      "TotalRating": 2.1
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Vampire_Aristocrat.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 1,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 2,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "2B",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 1, 0, 0, 0 ],
+      "ConvertedManaCost": 3,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Vampire", "Rogue", "SacrificeOwned", "AAbility", "PumpSelf" ]
+  },
+  {
+    "CardName": "Pitfall Trap",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.2,
+      "TotalRating": 2.2
+    },
+    "CardTypes": [ "Instant" ],
+    "ImageFile": "Images/MM3/Pitfall_Trap.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 2,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "2W",
+          "White": 1
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "W",
+          "White": 1
+        }
+      ],
+      "ColorIdentity": [ 2, 0, 0, 0, 0, 0 ],
+      "ConvertedManaCost": 3,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Removal", "Trap", "NonFlying" ]
+  },
+  {
+    "CardName": "Grasp of Phantoms",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 1.9,
+      "TotalRating": 1.9
+    },
+    "CardTypes": [ "Sorcery" ],
+    "ImageFile": "Images/MM3/Grasp_of_Phantoms.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 1,
+          "Colorless": 0,
+          "Generic": 3,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "3U",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 1,
+          "Colorless": 0,
+          "Generic": 7,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "7U",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 2, 0, 0, 0, 0 ],
+      "ConvertedManaCost": 4,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Tempo", "Tuck", "Flashback" ]
+  },
+  {
+    "CardName": "Burning-Tree Emissary",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.0,
+      "TotalRating": 2.0
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Burning-Tree_Emissary.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 2,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "RR",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 2,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "GG",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 0, 2, 2, 0 ],
+      "ConvertedManaCost": 2,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Human", "Shaman", "ETB", "MAbility" ]
+  },
+  {
+    "CardName": "Ghostly Flicker",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 1.5,
+      "TotalRating": 1.5
+    },
+    "CardTypes": [ "Instant" ],
+    "ImageFile": "Images/MM3/Ghostly_Flicker.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 1,
+          "Colorless": 0,
+          "Generic": 2,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 0,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "2U",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 1, 0, 0, 0, 0 ],
+      "ConvertedManaCost": 3,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "FlickerOwned" ]
+  },
+  {
+    "CardName": "Rubblebelt Maaka",
+    "CardRarity": "Common",
+    "CardRating": {
+      "AverageUserRating": null,
+      "DraftSimRating": null,
+      "LRCastRating": null,
+      "RyanRating": 2.0,
+      "TotalRating": 2.0
+    },
+    "CardTypes": [ "Creature" ],
+    "ImageFile": "Images/MM3/Rubblebelt_Maaka.jpg",
+    "ManaRelation": {
+      "AbilityCosts": [],
+      "CastingCosts": [
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 3,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 1,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "3R",
+          "White": 0
+        },
+        {
+          "Black": 0,
+          "Blue": 0,
+          "Colorless": 0,
+          "Generic": 0,
+          "Green": 0,
+          "IdentityWeight": 1,
+          "Red": 1,
+          "RelationshipType": "CastingCost",
+          "StringFormat": "R",
+          "White": 0
+        }
+      ],
+      "ColorIdentity": [ 0, 0, 0, 2, 0, 0 ],
+      "ConvertedManaCost": 4,
+      "GeneratedMana": []
+    },
+    "Name": null,
+    "SetName": "MM3",
+    "Tags": [ "Cat", "Bloodrush", "Pump" ]
+  }
+]

@@ -8,7 +8,7 @@ namespace Draftorama.Models
 {
     public class Card
     {
-        #region Private Fields
+        #region Fields
 
         private string _cardName;
         private string _cardRarity;
@@ -19,14 +19,15 @@ namespace Draftorama.Models
         private string _setName;
         private List<string> _tags;
 
-        #endregion Private Fields
+        #endregion Fields
 
-        #region Public Constructors
+        #region Constructors
 
         public Card(string cardStringIn, string setNameIn)
         {
             string[] cardLineParts = cardStringIn.Split(';');
 
+            Name = cardLineParts[0];
             cardLineParts[0] = cardLineParts[0].Replace("_", " ");
             _cardName = cardLineParts[0];
             _cardTypes = ReadTypes(cardLineParts[1]);
@@ -52,21 +53,17 @@ namespace Draftorama.Models
             _setName = setNameIn;
         }
 
-        #endregion Public Constructors
-
-        #region Private Constructors
-
         private Card()
         {
         }
 
-        #endregion Private Constructors
+        #endregion Constructors
 
         //public enum Rarity { Common, Uncommon, Rare, Mythic, Special }
 
         //public enum Types { Artifact, Creature, Enchantment, Instant, Land, Plainswalker, Sorcery, Tribal }
 
-        #region Public Properties
+        #region Properties
 
         public string CardName
         {
@@ -104,6 +101,8 @@ namespace Draftorama.Models
             set { _manaRelation = value; }
         }
 
+        public string Name { get; set; }
+
         public string SetName
         {
             get { return _setName; }
@@ -116,18 +115,14 @@ namespace Draftorama.Models
             set { _tags = value; }
         }
 
-        #endregion Public Properties
+        #endregion Properties
 
-        #region Public Methods
+        #region Methods
 
         public void ExportToJSON()
         {
             File.WriteAllText($"wwwroot/sets/{SetName}/{CardName}.json", JsonConvert.SerializeObject(this));
         }
-
-        #endregion Public Methods
-
-        #region Private Methods
 
         private string ReadRarity(string rarityStringIn)
         {
@@ -199,13 +194,13 @@ namespace Draftorama.Models
             return cardTypesFound;
         }
 
-        #endregion Private Methods
+        #endregion Methods
 
-        #region Public Structs
+        #region Structs
 
         public struct ManaRelations
         {
-            #region Private Fields
+            #region Fields
 
             private List<Mana> _abilityCosts;
             private List<Mana> _castingCosts;
@@ -213,9 +208,9 @@ namespace Draftorama.Models
             private int _convertedManaCost;
             private List<Mana> _generatedMana;
 
-            #endregion Private Fields
+            #endregion Fields
 
-            #region Public Constructors
+            #region Constructors
 
             public ManaRelations(string manaRelationsIn)
             {
@@ -240,9 +235,9 @@ namespace Draftorama.Models
                 _colorIdentity = CalculateColorIdentity();
             }
 
-            #endregion Public Constructors
+            #endregion Constructors
 
-            #region Public Properties
+            #region Properties
 
             public List<Mana> AbilityCosts
             {
@@ -274,9 +269,9 @@ namespace Draftorama.Models
                 set { _generatedMana = value; }
             }
 
-            #endregion Public Properties
+            #endregion Properties
 
-            #region Private Methods
+            #region Methods
 
             private int CalculateCMC()
             {
@@ -338,12 +333,12 @@ namespace Draftorama.Models
                 return ManaAssociations;
             }
 
-            #endregion Private Methods
+            #endregion Methods
         }
 
         public struct Rating
         {
-            #region Private Fields
+            #region Fields
 
             private double? _averageUserRating;
             private double? _draftSimRating;
@@ -351,9 +346,9 @@ namespace Draftorama.Models
             private double _ryanRating;
             private double _totalRating;
 
-            #endregion Private Fields
+            #endregion Fields
 
-            #region Public Constructors
+            #region Constructors
 
             public Rating(double ryanRatingIn, double? averageUserRatingIn, double? draftSimRatingIn, double? lrCastRatingIn)
             {
@@ -366,9 +361,9 @@ namespace Draftorama.Models
                 CalculateTotalRating(_ryanRating, _averageUserRating, _draftSimRating, _lrCastRating);
             }
 
-            #endregion Public Constructors
+            #endregion Constructors
 
-            #region Public Properties
+            #region Properties
 
             public double? AverageUserRating
             {
@@ -400,9 +395,9 @@ namespace Draftorama.Models
                 set { _totalRating = value; }
             }
 
-            #endregion Public Properties
+            #endregion Properties
 
-            #region Private Methods
+            #region Methods
 
             private void CalculateTotalRating(double ryanRating, double? averageUserRating, double? draftSimRating, double? lrCastRating)
             {
@@ -428,9 +423,9 @@ namespace Draftorama.Models
                 _totalRating = runningTotal / runningRatingCount;
             }
 
-            #endregion Private Methods
+            #endregion Methods
         }
 
-        #endregion Public Structs
+        #endregion Structs
     }
 }
