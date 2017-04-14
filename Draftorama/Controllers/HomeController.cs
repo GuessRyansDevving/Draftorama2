@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Draftorama.Models;
 
 namespace Draftorama.Controllers
 {
     public class HomeController : Controller
     {
-        #region Methods
+        #region Public Methods
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+
+            Set s = new Set("MM3");
+            //s.ImportFromTXT();
+            //s.ExportToJSON();
+            s.ImportFromJSON();
 
             return View();
         }
@@ -34,6 +40,6 @@ namespace Draftorama.Controllers
             return View();
         }
 
-        #endregion Methods
+        #endregion Public Methods
     }
 }

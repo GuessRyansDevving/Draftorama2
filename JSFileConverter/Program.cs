@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using Draftorama;
 
 namespace JSFileConverter
 {
     internal static class Program
     {
-        #region Methods
+        #region Private Methods
 
         private static void Main(string[] args)
         {
@@ -68,6 +69,6 @@ namespace JSFileConverter
             //}
         }
 
-        #endregion Methods
+        #endregion Private Methods
     }
 }

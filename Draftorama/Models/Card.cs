@@ -1,74 +1,72 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Draftorama.Models
 {
     public class Card
     {
-        #region Fields
+        #region Private Fields
 
         private string _cardName;
-        private Rarity _cardRarity;
-        private IEnumerable<Types> _cardTypes;
-        private Mana _castingCost;
-        private int _convertedManaCost;
+        private string _cardRarity;
+        private Rating _cardRating;
+        private List<string> _cardTypes;
         private string _imageFile;
-        private IEnumerable<Mana> _manaAssociations;
-        private IEnumerable<double> _ratings;
-        private IEnumerable<string> _tags;
-        private double _totalRating;
+        private ManaRelations _manaRelation;
+        private string _setName;
+        private List<string> _tags;
 
-        #endregion Fields
+        #endregion Private Fields
 
-        #region Constructors
+        #region Public Constructors
 
-        public Card(string nameIn, IEnumerable<Types> typesIn, Rarity rarityIn, string imageIn,
-            IEnumerable<double> ratingsIn, IEnumerable<Mana> manaCostsIn, IEnumerable<string> tagsIn)
+        public Card(string cardStringIn, string setNameIn)
+        {
+            string[] cardLineParts = cardStringIn.Split(';');
+
+            cardLineParts[0] = cardLineParts[0].Replace("_", " ");
+            _cardName = cardLineParts[0];
+            _cardTypes = ReadTypes(cardLineParts[1]);
+            _cardRarity = ReadRarity(cardLineParts[2]);
+            _imageFile = cardLineParts[3];
+            _cardRating = ReadRatings(cardLineParts[4]);
+            _manaRelation = new ManaRelations(cardLineParts[5]);
+            cardLineParts[6] = cardLineParts[6].Replace("\r", "");
+            _tags = ReadTags(cardLineParts[6]);
+            _setName = setNameIn;
+        }
+
+        public Card(string nameIn, List<string> typesIn, string rarityIn, string imageIn,
+            Rating ratingIn, ManaRelations manaRelationIn, List<string> tagsIn, string setNameIn)
         {
             _cardName = nameIn;
             _cardTypes = typesIn;
             _cardRarity = rarityIn;
             _imageFile = imageIn;
-            _ratings = ratingsIn;
-            _totalRating = _ratings.First();
-            _manaAssociations = manaCostsIn;
-            _castingCost = _manaAssociations.First();
-            _convertedManaCost = _castingCost.calculateCMC();
+            _cardRating = ratingIn;
+            _manaRelation = manaRelationIn;
             _tags = tagsIn;
+            _setName = setNameIn;
         }
+
+        #endregion Public Constructors
+
+        #region Private Constructors
 
         private Card()
         {
         }
 
-        #endregion Constructors
+        #endregion Private Constructors
 
-        #region Enums
+        //public enum Rarity { Common, Uncommon, Rare, Mythic, Special }
 
-        public enum Rarity
-        {
-            Common = 0,
-            Uncommon = 1,
-            Rare = 2,
-            Mythic = 3,
-            Special = 4
-        }
+        //public enum Types { Artifact, Creature, Enchantment, Instant, Land, Plainswalker, Sorcery, Tribal }
 
-        public enum Types
-        {
-            Artifact = 0,
-            Creature = 1,
-            Enchantment = 2,
-            Instant = 3,
-            Land = 4,
-            Plainswalker = 5,
-            Sorcery = 6,
-            Tribal = 7
-        }
-
-        #endregion Enums
-
-        #region Properties
+        #region Public Properties
 
         public string CardName
         {
@@ -76,28 +74,22 @@ namespace Draftorama.Models
             set { _cardName = value; }
         }
 
-        public Rarity CardRarity
+        public string CardRarity
         {
             get { return _cardRarity; }
             set { _cardRarity = value; }
         }
 
-        public IEnumerable<Types> CardTypes
+        public Rating CardRating
+        {
+            get { return _cardRating; }
+            set { _cardRating = value; }
+        }
+
+        public List<string> CardTypes
         {
             get { return _cardTypes; }
             set { _cardTypes = value; }
-        }
-
-        public Mana CastingCost
-        {
-            get { return _castingCost; }
-            set { _castingCost = value; }
-        }
-
-        public int ConvertedManaCost
-        {
-            get { return _convertedManaCost; }
-            set { _convertedManaCost = value; }
         }
 
         public string ImageFile
@@ -106,168 +98,339 @@ namespace Draftorama.Models
             set { _imageFile = value; }
         }
 
-        public IEnumerable<Mana> ManaAssociations
+        public ManaRelations ManaRelation
         {
-            get { return _manaAssociations; }
-            set { _manaAssociations = value; }
+            get { return _manaRelation; }
+            set { _manaRelation = value; }
         }
 
-        public IEnumerable<double> Ratings
+        public string SetName
         {
-            get { return _ratings; }
-            set { _ratings = value; }
+            get { return _setName; }
+            set { _setName = value; }
         }
 
-        public IEnumerable<string> Tags
+        public List<string> Tags
         {
             get { return _tags; }
             set { _tags = value; }
         }
 
-        public double TotalRating
+        #endregion Public Properties
+
+        #region Public Methods
+
+        public void ExportToJSON()
         {
-            get { return _totalRating; }
-            set { _totalRating = value; }
+            File.WriteAllText($"wwwroot/sets/{SetName}/{CardName}.json", JsonConvert.SerializeObject(this));
         }
 
-        #endregion Properties
+        #endregion Public Methods
 
-        #region Structs
+        #region Private Methods
 
-        public struct Mana
+        private string ReadRarity(string rarityStringIn)
         {
-            #region Fields
+            string r;
 
-            private int _black;
-
-            private int _blue;
-
-            private double[] _colorIdentity;
-
-            private int _colorless;
-
-            private int _generic;
-
-            private int _green;
-
-            private ManaRelation _manaRelation;
-
-            private int _red;
-
-            private string _stringFormat;
-
-            private double _weight;
-
-            private int _white;
-
-            #endregion Fields
-
-            #region Enums
-
-            public enum ManaRelation
+            switch (rarityStringIn)
             {
-                CastingCost = 0,
-                AlternateCastingCost = 1,
-                ActivatedAbility = 2,
-                Fee = 3,
-                GeneratedMana = 4
+                case "C":
+                    r = "Common";
+                    break;
+
+                case "U":
+                    r = "Uncommon";
+                    break;
+
+                case "R":
+                    r = "Rare";
+                    break;
+
+                case "M":
+                    r = "Mythic";
+                    break;
+
+                default:
+                    r = "Special";
+                    break;
             }
 
-            public enum ManaTypes
+            return r;
+        }
+
+        private Card.Rating ReadRatings(string ratingStringIn)
+        {
+            double?[] ratingsIn = { null, null, null, null };
+            int ratingCount = 0;
+
+            foreach (string ratingString in ratingStringIn.Split(','))
             {
-                Black = 0,
-                Blue = 1,
-                Colorless = 2,
-                Generic = 3,
-                Green = 4,
-                Hybrid = 5,
-                Red = 6,
-                White = 7
+                ratingsIn[ratingCount] = Convert.ToDouble(ratingString);
+            }
+            return new Card.Rating((double)ratingsIn[0], ratingsIn[1], ratingsIn[2], ratingsIn[3]);
+        }
+
+        private List<string> ReadTags(string tagStringIn)
+        {
+            List<string> tags = new List<string>();
+
+            foreach (string tag in tagStringIn.Split(','))
+            {
+                tags.Add(tag);
             }
 
-            #endregion Enums
+            return tags;
+        }
 
-            #region Properties
+        private List<string> ReadTypes(string typesStringIn)
+        {
+            List<string> cardTypesFound = new List<string>();
 
-            public int Black
+            foreach (string cardTypeIn in typesStringIn.Split(','))
             {
-                get { return _black; }
-                set { _black = value; }
+                if (cardTypeIn == "Artifact" || cardTypeIn == "Creature" || cardTypeIn == "Enchantment" || cardTypeIn == "Instant" ||
+                    cardTypeIn == "Land" || cardTypeIn == "Plainswalker" || cardTypeIn == "Sorcery" || cardTypeIn == "Tribal")
+                {
+                    cardTypesFound.Add(cardTypeIn);
+                }
             }
 
-            public int Blue
+            return cardTypesFound;
+        }
+
+        #endregion Private Methods
+
+        #region Public Structs
+
+        public struct ManaRelations
+        {
+            #region Private Fields
+
+            private List<Mana> _abilityCosts;
+            private List<Mana> _castingCosts;
+            private int[] _colorIdentity;
+            private int _convertedManaCost;
+            private List<Mana> _generatedMana;
+
+            #endregion Private Fields
+
+            #region Public Constructors
+
+            public ManaRelations(string manaRelationsIn)
             {
-                get { return _blue; }
-                set { _blue = value; }
+                _abilityCosts = new List<Mana>();
+                _castingCosts = new List<Mana>();
+                _generatedMana = new List<Mana>();
+                _colorIdentity = new int[] { 0, 0, 0, 0, 0, 0 };
+                _convertedManaCost = 0;
+
+                string[] manaRelationsInParts = manaRelationsIn.Split(':');
+
+                _castingCosts = ReadCostsFromString(manaRelationsInParts[0], "CastingCost");
+                if (manaRelationsInParts.Length > 1)
+                {
+                    _abilityCosts = ReadCostsFromString(manaRelationsInParts[1], "AbilityCost");
+                }
+                if (manaRelationsInParts.Length > 2)
+                {
+                    _generatedMana = ReadCostsFromString(manaRelationsInParts[2], "ManaGenerated");
+                }
+                _convertedManaCost = CalculateCMC();
+                _colorIdentity = CalculateColorIdentity();
             }
 
-            public double[] ColorIdentity
+            #endregion Public Constructors
+
+            #region Public Properties
+
+            public List<Mana> AbilityCosts
+            {
+                get { return _abilityCosts; }
+                set { _abilityCosts = value; }
+            }
+
+            public List<Mana> CastingCosts
+            {
+                get { return _castingCosts; }
+                set { _castingCosts = value; }
+            }
+
+            public int[] ColorIdentity
             {
                 get { return _colorIdentity; }
                 set { _colorIdentity = value; }
             }
 
-            public int Colorless
+            public int ConvertedManaCost
             {
-                get { return _colorless; }
-                set { _colorless = value; }
+                get { return _convertedManaCost; }
+                set { _convertedManaCost = value; }
             }
 
-            public ManaRelation CostType
+            public List<Mana> GeneratedMana
             {
-                get { return _manaRelation; }
-                set { _manaRelation = value; }
+                get { return _generatedMana; }
+                set { _generatedMana = value; }
             }
 
-            public int Generic
+            #endregion Public Properties
+
+            #region Private Methods
+
+            private int CalculateCMC()
             {
-                get { return _generic; }
-                set { _generic = value; }
-            }
+                int cost = 0;
+                if (CastingCosts.Count > 0)
+                {
+                    cost = CastingCosts.First().Generic + CastingCosts.First().Colorless + CastingCosts.First().White + CastingCosts.First().Blue + CastingCosts.First().Black + CastingCosts.First().Red + CastingCosts.First().Green;
+                }
 
-            public int Green
-            {
-                get { return _green; }
-                set { _green = value; }
-            }
-
-            public int Red
-            {
-                get { return _red; }
-                set { _red = value; }
-            }
-
-            public string StringFormat
-            {
-                get { return _stringFormat; }
-                set { _stringFormat = value; }
-            }
-
-            public double Weight
-            {
-                get { return _weight; }
-                set { _weight = value; }
-            }
-
-            public int White
-            {
-                get { return _white; }
-                set { _white = value; }
-            }
-
-            #endregion Properties
-
-            #region Methods
-
-            public int calculateCMC()
-            {
-                int cost = this.Generic + this.Colorless + this.White + this.Blue + this.Black + this.Red + this.Green;
                 return cost;
             }
 
-            #endregion Methods
+            private int[] CalculateColorIdentity()
+            {
+                int[] identity = new int[] { 0, 0, 0, 0, 0, 0 };
+
+                foreach (Mana m in CastingCosts)
+                {
+                    identity[0] += m.White * m.IdentityWeight;
+                    identity[1] += m.Blue * m.IdentityWeight;
+                    identity[2] += m.Black * m.IdentityWeight;
+                    identity[3] += m.Red * m.IdentityWeight;
+                    identity[4] += m.Green * m.IdentityWeight;
+                    identity[5] += m.Colorless * m.IdentityWeight;
+                }
+                foreach (Mana m in AbilityCosts)
+                {
+                    identity[0] += m.White * m.IdentityWeight;
+                    identity[1] += m.Blue * m.IdentityWeight;
+                    identity[2] += m.Black * m.IdentityWeight;
+                    identity[3] += m.Red * m.IdentityWeight;
+                    identity[4] += m.Green * m.IdentityWeight;
+                    identity[5] += m.Colorless * m.IdentityWeight;
+                }
+                foreach (Mana m in GeneratedMana)
+                {
+                    identity[0] += m.White * m.IdentityWeight;
+                    identity[1] += m.Blue * m.IdentityWeight;
+                    identity[2] += m.Black * m.IdentityWeight;
+                    identity[3] += m.Red * m.IdentityWeight;
+                    identity[4] += m.Green * m.IdentityWeight;
+                    identity[5] += m.Colorless * m.IdentityWeight;
+                }
+
+                return identity;
+            }
+
+            private List<Mana> ReadCostsFromString(string manaStringIn, string relationType)
+            {
+                List<Mana> ManaAssociations = new List<Mana>();
+
+                foreach (string manaString in manaStringIn.Split(','))
+                {
+                    Mana newMana = new Mana(manaString, relationType);
+
+                    ManaAssociations.Add(newMana);
+                }
+
+                return ManaAssociations;
+            }
+
+            #endregion Private Methods
         }
 
-        #endregion Structs
+        public struct Rating
+        {
+            #region Private Fields
+
+            private double? _averageUserRating;
+            private double? _draftSimRating;
+            private double? _lrCastRating;
+            private double _ryanRating;
+            private double _totalRating;
+
+            #endregion Private Fields
+
+            #region Public Constructors
+
+            public Rating(double ryanRatingIn, double? averageUserRatingIn, double? draftSimRatingIn, double? lrCastRatingIn)
+            {
+                _averageUserRating = averageUserRatingIn;
+                _draftSimRating = draftSimRatingIn;
+                _lrCastRating = lrCastRatingIn;
+                _ryanRating = ryanRatingIn;
+                _totalRating = 0;
+
+                CalculateTotalRating(_ryanRating, _averageUserRating, _draftSimRating, _lrCastRating);
+            }
+
+            #endregion Public Constructors
+
+            #region Public Properties
+
+            public double? AverageUserRating
+            {
+                get { return _averageUserRating; }
+                set { _averageUserRating = value; }
+            }
+
+            public double? DraftSimRating
+            {
+                get { return _draftSimRating; }
+                set { _draftSimRating = value; }
+            }
+
+            public double? LRCastRating
+            {
+                get { return _lrCastRating; }
+                set { _lrCastRating = value; }
+            }
+
+            public double RyanRating
+            {
+                get { return _ryanRating; }
+                set { _ryanRating = value; }
+            }
+
+            public double TotalRating
+            {
+                get { return _totalRating; }
+                set { _totalRating = value; }
+            }
+
+            #endregion Public Properties
+
+            #region Private Methods
+
+            private void CalculateTotalRating(double ryanRating, double? averageUserRating, double? draftSimRating, double? lrCastRating)
+            {
+                double runningTotal = ryanRating;
+                int runningRatingCount = 1;
+
+                if (averageUserRating != null)
+                {
+                    runningTotal += (double)averageUserRating;
+                    runningRatingCount++;
+                }
+                if (draftSimRating != null)
+                {
+                    runningTotal += (double)draftSimRating;
+                    runningRatingCount++;
+                }
+                if (lrCastRating != null)
+                {
+                    runningTotal += (double)lrCastRating;
+                    runningRatingCount++;
+                }
+
+                _totalRating = runningTotal / runningRatingCount;
+            }
+
+            #endregion Private Methods
+        }
+
+        #endregion Public Structs
     }
 }

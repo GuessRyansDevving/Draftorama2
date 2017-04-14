@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Draftorama.Models
 {
-    public class Pack : IPool
+    public class Pack
     {
         #region Constructors
 

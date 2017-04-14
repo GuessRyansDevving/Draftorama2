@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <Content Include="wwwroot\sets\MM3.txt" />
+    <Content Include="wwwroot\sets\MM3\MM3.js" />
+    <Content Include="wwwroot\sets\MM3\MM3.txt" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
