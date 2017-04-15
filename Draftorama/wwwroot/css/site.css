@@ -17,6 +17,16 @@ textarea {
     max-width: 280px;
 }
 
+.foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#text-draftbot {
+    transition: ease-in-out;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

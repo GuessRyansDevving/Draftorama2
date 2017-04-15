@@ -12,7 +12,7 @@ namespace Draftorama
 {
     public class Startup
     {
-        #region Constructors
+        #region Public Constructors
 
         public Startup(IHostingEnvironment env)
         {
@@ -24,15 +24,15 @@ namespace Draftorama
             Configuration = builder.Build();
         }
 
-        #endregion Constructors
+        #endregion Public Constructors
 
-        #region Properties
+        #region Public Properties
 
         public IConfigurationRoot Configuration { get; }
 
-        #endregion Properties
+        #endregion Public Properties
 
-        #region Methods
+        #region Public Methods
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -56,7 +56,7 @@ namespace Draftorama
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Intro}/{id?}");
             });
         }
 
@@ -67,6 +67,6 @@ namespace Draftorama
             services.AddMvc();
         }
 
-        #endregion Methods
+        #endregion Public Methods
     }
 }

@@ -21,15 +21,39 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
-
-    <div id="footer" class="container-fluid">
-        <div class="navbar navbar navbar-fixed-bottom col-md-10 col-md-offset-1">
-            <h5>&copy; 2017 - Draftorama</h5>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Draftorama</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                           asp-area="" asp-controller="Home" asp-action="Contact">Draft<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">MM3</a></li>
+                            <li><a href="#">Something Else</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - Draftorama</p>
+        </footer>
     </div>
 
     <environment names="Development">

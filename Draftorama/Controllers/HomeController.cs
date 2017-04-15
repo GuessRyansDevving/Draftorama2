@@ -9,7 +9,7 @@ namespace Draftorama.Controllers
 {
     public class HomeController : Controller
     {
-        #region Methods
+        #region Public Methods
 
         public IActionResult About()
         {
@@ -41,6 +41,11 @@ namespace Draftorama.Controllers
             return View();
         }
 
-        #endregion Methods
+        public IActionResult Intro()
+        {
+            return View();
+        }
+
+        #endregion Public Methods
     }
 }
