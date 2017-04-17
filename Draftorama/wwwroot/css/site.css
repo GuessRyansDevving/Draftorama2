@@ -23,9 +23,54 @@ textarea {
     width: 100%;
 }
 
-#text-draftbot {
-    transition: ease-in-out;
+#text-draftbot-intro-1 {
+    opacity: 0;
+    /*-webkit-animation: fadein 2s;
+    animation: fadein 2s;*/
 }
+
+#text-draftbot-intro-2 {
+    opacity: 0;
+    /*animation-delay: 3s;
+    -webkit-animation: fadein 2s;
+    animation: fadein 2s;*/
+}
+
+#buttons-draftbot-intro-group {
+    margin-top: 40px;
+}
+
+#buttons-draftbot-intro-1 {
+    opacity: 0;
+}
+
+#buttons-draftbot-intro-2 {
+    opacity: 0;
+}
+
+#buttons-draftbot-intro-3 {
+    opacity: 0;
+}
+
+/*@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}*/
 
 /* Carousel */
 .carousel-caption p {
