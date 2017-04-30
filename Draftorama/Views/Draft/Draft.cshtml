@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Draftorama.Models.Card>
+@{
+    ViewData["Title"] = "Draft";
+}
+
+@*<nav class="navbar navbar-header navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Modern Masters 2017 Draft</a>
+            </div>
+        </div>
+    </nav>*@
+
+<!-- Nav tabs -->
+<ul class="nav navbar nav-tabs navbar-default navbar-fixed-top" role="tablist">
+    <li role="presentation" class="active"><a href="#pack" aria-controls="pack" role="tab" data-toggle="tab">Pack</a></li>
+    <li role="presentation"><a href="#pool" aria-controls="pool" role="tab" data-toggle="tab">Card Pool</a></li>
+    <li role="presentation"><a href="#deck" aria-controls="deck" role="tab" data-toggle="tab">Deck</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="pack">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var crd in Model)
+                    {
+                        <div class="col-md-2" style="margin:0; padding:3px;">
+                            <img src=/@crd.ImageFile.ToString() class="img-rounded" style="border-radius:15px; max-width:265px; max-height:370px; width:100%; height:100%">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="pool">...</div>
+    <div role="tabpanel" class="tab-pane" id="deck">...</div>
+</div>

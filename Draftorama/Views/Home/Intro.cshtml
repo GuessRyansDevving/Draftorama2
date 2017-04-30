@@ -23,48 +23,63 @@
         <div class="col-md-8 col-md-offset-2">
             <div id="buttons-draftbot-intro-group" class="btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
                 <div id="buttons-draftbot-intro-1" class="btn-group" role="group">
-                    <button type="button" class="btn btn-info">Draft Against Me</button>
+                    @*<button type="button" class="btn btn-info">Draft Against Me</button>*@
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Draft Against Me <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a asp-area="" asp-controller="Draft" asp-action="Draft">Modern Masters</a></li>
+                        <li><a href="#">Aether Revolt</a></li>
+                        <li><a href="#">Kaladesh</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Amonkhet</a></li>
+                    </ul>
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            ...
+                        </div>
+                    </div>
                 </div>
                 <div id="buttons-draftbot-intro-2" class="btn-group" role="group">
-                    <button type="button" class="btn btn-info">Draft Against Opponents</button>
+                    <button type="button" class="btn btn-info" disabled="disabled">Draft Against Opponents</button>
                 </div>
                 <div id="buttons-draftbot-intro-3" class="btn-group" role="group">
-                    <button type="button" class="btn btn-info">Learn from Me</button>
+                    <button type="button" class="btn btn-info" disabled="disabled">Learn from Me</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-2 col-md-offset-1">
-            <div class="thumbnail">
-                <img src="~/images/MM3/_Splash_242x200.jpg" alt="MM3">
-                <div class="caption">
-                    <h3>Modern Masters 2017</h3>
-                    <p>Blah blah blah blah blah</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+    @*<div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                    <div class="thumbnail">
+                        <img src="~/images/MM3/_Splash_242x200.jpg" alt="MM3">
+                        <div class="caption">
+                            <h3>Modern Masters 2017</h3>
+                            <p>Blah blah blah blah blah</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="thumbnail">
-                <img src="~/images/KLD/KLD_Fankit/Avatar_KLD_Key-Art.jpg" alt="KLD">
-                <div class="caption ">
-                    <h3>Kaladesh</h3>
-                    <p>Blah blah blah blah blah</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/images/KLD/KLD_Fankit/Avatar_KLD_Key-Art.jpg" alt="KLD">
+                        <div class="caption ">
+                            <h3>Kaladesh</h3>
+                            <p>Blah blah blah blah blah</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="thumbnail">
-                <img src="~/images/KLD/KLD_Fankit/Avatar_KLD_Key-Art.jpg" alt="KLD">
-                <div class="caption ">
-                    <h3>Kaladesh</h3>
-                    <p>Blah blah blah blah blah</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/images/KLD/KLD_Fankit/Avatar_KLD_Key-Art.jpg" alt="KLD">
+                        <div class="caption ">
+                            <h3>Kaladesh</h3>
+                            <p>Blah blah blah blah blah</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+        </div>*@
 </div>
