@@ -23,6 +23,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.Development.json" />
+    <Content Include="appsettings.json" />
+    <Content Include="bundleconfig.json" />
+    <Content Include="config.json" />
+    <Content Include="Views\Draft\Draft.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Draft.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Intro.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout_Backup.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="wwwroot\Images\MM3\Abrupt_Decay.jpg" />
     <Content Include="wwwroot\Images\MM3\Abyssal_Specter.jpg" />
     <Content Include="wwwroot\Images\MM3\Advent_of_the_Wurm.jpg" />
