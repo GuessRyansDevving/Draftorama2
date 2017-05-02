@@ -28,7 +28,14 @@ namespace Draftorama.Models
 
         #region Public Properties
 
+        public DbSet<Card> Cards { get; set; }
+
         public DbSet<Draft> Drafts { get; set; }
+        public DbSet<Mana> Manas { get; set; }
+
+        public DbSet<Pack> Pack { get; set; }
+        public DbSet<Card> Players { get; set; }
+        public DbSet<Set> Sets { get; set; }
 
         #endregion Public Properties
 

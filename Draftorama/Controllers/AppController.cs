@@ -7,7 +7,7 @@ using Draftorama.Models;
 
 namespace Draftorama.Controllers
 {
-    public class HomeController : Controller
+    public class AppController : Controller
     {
         #region Public Methods
 
