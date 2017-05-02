@@ -8,7 +8,7 @@ namespace Draftorama.Models
 {
     public class Card
     {
-        #region Fields
+        #region Private Fields
 
         private string _cardName;
         private string _cardRarity;
@@ -19,9 +19,9 @@ namespace Draftorama.Models
         private string _setName;
         private List<string> _tags;
 
-        #endregion Fields
+        #endregion Private Fields
 
-        #region Constructors
+        #region Public Constructors
 
         public Card(string cardStringIn, string setNameIn)
         {
@@ -30,6 +30,25 @@ namespace Draftorama.Models
             Name = cardLineParts[0];
             cardLineParts[0] = cardLineParts[0].Replace("_", " ");
             _cardName = cardLineParts[0];
+            _cardTypes = ReadTypes(cardLineParts[1]);
+            _cardRarity = ReadRarity(cardLineParts[2]);
+            _imageFile = cardLineParts[3];
+            _cardRating = ReadRatings(cardLineParts[4]);
+            _manaRelation = new ManaRelations(cardLineParts[5]);
+            cardLineParts[6] = cardLineParts[6].Replace("\r", "");
+            _tags = ReadTags(cardLineParts[6]);
+            _setName = setNameIn;
+        }
+
+        public Card(string cardStringIn, string setNameIn, bool isText)
+        {
+            cardStringIn = cardStringIn.Replace("\"", "");
+            char[] sc = new char[] { ',', ':' };
+            string[] cardLineParts = cardStringIn.Split(sc);
+
+            Name = cardLineParts[1];
+            Name = Name.Replace("_", " ");
+            _cardName = Name;
             _cardTypes = ReadTypes(cardLineParts[1]);
             _cardRarity = ReadRarity(cardLineParts[2]);
             _imageFile = cardLineParts[3];
@@ -53,17 +72,21 @@ namespace Draftorama.Models
             _setName = setNameIn;
         }
 
+        #endregion Public Constructors
+
+        #region Private Constructors
+
         private Card()
         {
         }
 
-        #endregion Constructors
+        #endregion Private Constructors
 
         //public enum Rarity { Common, Uncommon, Rare, Mythic, Special }
 
         //public enum Types { Artifact, Creature, Enchantment, Instant, Land, Plainswalker, Sorcery, Tribal }
 
-        #region Properties
+        #region Public Properties
 
         public string CardName
         {
@@ -115,14 +138,18 @@ namespace Draftorama.Models
             set { _tags = value; }
         }
 
-        #endregion Properties
+        #endregion Public Properties
 
-        #region Methods
+        #region Public Methods
 
         public void ExportToJSON()
         {
             File.WriteAllText($"wwwroot/sets/{SetName}/{CardName}.json", JsonConvert.SerializeObject(this));
         }
+
+        #endregion Public Methods
+
+        #region Private Methods
 
         private string ReadRarity(string rarityStringIn)
         {
@@ -194,13 +221,13 @@ namespace Draftorama.Models
             return cardTypesFound;
         }
 
-        #endregion Methods
+        #endregion Private Methods
 
-        #region Structs
+        #region Public Structs
 
         public struct ManaRelations
         {
-            #region Fields
+            #region Private Fields
 
             private List<Mana> _abilityCosts;
             private List<Mana> _castingCosts;
@@ -208,9 +235,9 @@ namespace Draftorama.Models
             private int _convertedManaCost;
             private List<Mana> _generatedMana;
 
-            #endregion Fields
+            #endregion Private Fields
 
-            #region Constructors
+            #region Public Constructors
 
             public ManaRelations(string manaRelationsIn)
             {
@@ -235,9 +262,9 @@ namespace Draftorama.Models
                 _colorIdentity = CalculateColorIdentity();
             }
 
-            #endregion Constructors
+            #endregion Public Constructors
 
-            #region Properties
+            #region Public Properties
 
             public List<Mana> AbilityCosts
             {
@@ -269,9 +296,9 @@ namespace Draftorama.Models
                 set { _generatedMana = value; }
             }
 
-            #endregion Properties
+            #endregion Public Properties
 
-            #region Methods
+            #region Private Methods
 
             private int CalculateCMC()
             {
@@ -333,12 +360,12 @@ namespace Draftorama.Models
                 return ManaAssociations;
             }
 
-            #endregion Methods
+            #endregion Private Methods
         }
 
         public struct Rating
         {
-            #region Fields
+            #region Private Fields
 
             private double? _averageUserRating;
             private double? _draftSimRating;
@@ -346,9 +373,9 @@ namespace Draftorama.Models
             private double _ryanRating;
             private double _totalRating;
 
-            #endregion Fields
+            #endregion Private Fields
 
-            #region Constructors
+            #region Public Constructors
 
             public Rating(double ryanRatingIn, double? averageUserRatingIn, double? draftSimRatingIn, double? lrCastRatingIn)
             {
@@ -361,9 +388,9 @@ namespace Draftorama.Models
                 CalculateTotalRating(_ryanRating, _averageUserRating, _draftSimRating, _lrCastRating);
             }
 
-            #endregion Constructors
+            #endregion Public Constructors
 
-            #region Properties
+            #region Public Properties
 
             public double? AverageUserRating
             {
@@ -395,9 +422,9 @@ namespace Draftorama.Models
                 set { _totalRating = value; }
             }
 
-            #endregion Properties
+            #endregion Public Properties
 
-            #region Methods
+            #region Private Methods
 
             private void CalculateTotalRating(double ryanRating, double? averageUserRating, double? draftSimRating, double? lrCastRating)
             {
@@ -423,9 +450,9 @@ namespace Draftorama.Models
                 _totalRating = runningTotal / runningRatingCount;
             }
 
-            #endregion Methods
+            #endregion Private Methods
         }
 
-        #endregion Structs
+        #endregion Public Structs
     }
 }

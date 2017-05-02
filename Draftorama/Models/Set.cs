@@ -10,26 +10,26 @@ namespace Draftorama.Models
 {
     public class Set
     {
-        #region Fields
+        #region Private Fields
 
         private List<Card> _cardsInSet;
         private string _setName;
         private PackInfo _setPackInfo;
 
-        #endregion Fields
+        #endregion Private Fields
 
-        #region Constructors
+        #region Public Constructors
 
         public Set(string setNameIn)
         {
             _setName = setNameIn;
             _cardsInSet = new List<Card>();
-            SetPackInfo = new PackInfo(14,1,3,10);
+            SetPackInfo = new PackInfo(14, 1, 3, 10);
         }
 
-        #endregion Constructors
+        #endregion Public Constructors
 
-        #region Properties
+        #region Public Properties
 
         public List<Card> CardsInSet
         {
@@ -69,9 +69,9 @@ namespace Draftorama.Models
             get { return _cardsInSet.Where(x => x.CardRarity == "Uncommon").ToList(); }
         }
 
-        #endregion Properties
+        #endregion Public Properties
 
-        #region Methods
+        #region Public Methods
 
         public void ExportToJSON()
         {
@@ -93,13 +93,13 @@ namespace Draftorama.Models
             }
         }
 
-        #endregion Methods
+        #endregion Public Methods
 
-        #region Structs
+        #region Public Structs
 
         public struct PackInfo
         {
-            #region Constructors
+            #region Public Constructors
 
             public PackInfo(int maxCardsInPackIn = 14, int maxRaresInPackIn = 1, int maxUncommonsInPackIn = 3, int maxCommonsInPackIn = 10)
             {
@@ -109,9 +109,9 @@ namespace Draftorama.Models
                 MaxCommonsInPack = maxCommonsInPackIn;
             }
 
-            #endregion Constructors
+            #endregion Public Constructors
 
-            #region Properties
+            #region Public Properties
 
             public int MaxCardsInPack { get; private set; }
 
@@ -121,9 +121,9 @@ namespace Draftorama.Models
 
             public int MaxUncommonsInPack { get; private set; }
 
-            #endregion Properties
+            #endregion Public Properties
         }
 
-        #endregion Structs
+        #endregion Public Structs
     }
 }

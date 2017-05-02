@@ -1,22 +1,7 @@
-﻿@model IEnumerable<Draftorama.Models.Card>
+﻿@model Draftorama.Models.Draft
 @{
     ViewData["Title"] = "Draft";
 }
-
-@*<nav class="navbar navbar-header navbar-fixed-top">
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Modern Masters 2017 Draft</a>
-            </div>
-        </div>
-    </nav>*@
 
 <!-- Nav tabs -->
 <ul class="nav navbar nav-tabs navbar-default navbar-fixed-top" role="tablist">
@@ -31,16 +16,66 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    @foreach (var crd in Model)
+                    @foreach (var crd in Model.Table.First().PackInHand.CardsInPack)
                     {
                         <div class="col-md-2" style="margin:0; padding:3px;">
-                            <img src=/@crd.ImageFile.ToString() class="img-rounded" style="border-radius:15px; max-width:265px; max-height:370px; width:100%; height:100%">
+                            <a href='@Url.Action(
+                                    action: "MakePick",
+                                    controller: "Draft",
+                                    values: new
+                                    {
+                                        cardPickedNameIn = crd.CardName
+                                    })'>
+                                <img src=/@crd.ImageFile.ToString() class="img-rounded card" style="border-radius:15px; max-width:265px; max-height:370px; width:100%; height:100%">
+                            </a>
                         </div>
                     }
                 </div>
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="pool">...</div>
-    <div role="tabpanel" class="tab-pane" id="deck">...</div>
+    <div role="tabpanel" class="tab-pane" id="pool">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var crd in Model.Table.First().CardPool.PicksNotInDeck)
+                    {
+                        <div class="col-md-2" style="margin:0; padding:3px;">
+                            <a href='@Url.Action(
+                                    action: "MovePickToDeck",
+                                    controller: "Draft",
+                                    values: new
+                                    {
+                                        cardPickedNameIn = crd.CardName
+                                    })'>
+                                <img src=/@crd.ImageFile.ToString() class="img-rounded card" style="border-radius:15px; max-width:265px; max-height:370px; width:100%; height:100%">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="deck">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var crd in Model.Table.First().CardPool.PicksInDeck)
+                    {
+                        <div class="col-md-2" style="margin:0; padding:3px;">
+                            <a href='@Url.Action(
+                                    action: "RemovePickFromDeck",
+                                    controller: "Draft",
+                                    values: new
+                                    {
+                                        cardPickedNameIn = crd.CardName
+                                    })'>
+                                <img src=/@crd.ImageFile.ToString() class="img-rounded card" style="border-radius:15px; max-width:265px; max-height:370px; width:100%; height:100%">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DraftContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=DraftoramaDB;Trusted_Connection=true;MultipleActiveResultSets=true;"
+  }
+}

@@ -16,8 +16,6 @@ namespace Draftorama.Controllers
             ViewData["Message"] = "Your application description page.";
 
             Set s = new Set("MM3");
-            //s.ImportFromTXT();
-            //s.ExportToJSON();
             s.ImportFromJSON();
             Pack p = new Pack(s);
 

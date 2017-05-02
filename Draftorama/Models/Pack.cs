@@ -10,7 +10,7 @@ namespace Draftorama.Models
 {
     public class Pack
     {
-        #region Fields
+        #region Private Fields
 
         private List<Card> _cardsInPack;
         private int[] _packColorBalance;
@@ -18,32 +18,27 @@ namespace Draftorama.Models
         private Random _rand;
         private string _setName;
 
-        #endregion Fields
+        #endregion Private Fields
 
-        #region Constructors
+        #region Public Constructors
 
         public Pack(Set draftSetIn)
         {
             PackSet = draftSetIn;
-            SetName = PackSet.SetName;
 
             CardsInPack = new List<Card>();
-            _rand = new Random();
-            _packColorBalance = new int[] { 0, 0, 0, 0, 0 };
 
-            BuildPackCommons();
-            BuildPackUncommons();
-            BuildPackRare();
-            //BuildPackSpecial();
-
-            CardsInPack.Reverse();
-
-            ExportToJSON();
+            GeneratePack();
         }
 
-        #endregion Constructors
+        public Pack()
+        {
+            CardsInPack = new List<Card>();
+        }
 
-        #region Properties
+        #endregion Public Constructors
+
+        #region Public Properties
 
         public List<Card> CardsInPack
         {
@@ -77,20 +72,30 @@ namespace Draftorama.Models
             set { _packSet = value; }
         }
 
-        public string SetName
-        {
-            get { return _setName; }
-            set { _setName = value; }
-        }
+        #endregion Public Properties
 
-        #endregion Properties
-
-        #region Methods
+        #region Public Methods
 
         public void ExportToJSON()
         {
             File.WriteAllText($"wwwroot/sets/{_setName}/GeneratedPack.json", JsonConvert.SerializeObject(CardsInPack));
         }
+
+        public void GeneratePack()
+        {
+            _rand = new Random();
+            _packColorBalance = new int[] { 0, 0, 0, 0, 0 };
+            BuildPackCommons();
+            BuildPackUncommons();
+            BuildPackRare();
+            //BuildPackSpecial();
+            CardsInPack.Reverse();
+            //ExportToJSON();ortToJSON();
+        }
+
+        #endregion Public Methods
+
+        #region Private Methods
 
         private void BuildPackCommons()
         {
@@ -183,6 +188,6 @@ namespace Draftorama.Models
             }
         }
 
-        #endregion Methods
+        #endregion Private Methods
     }
 }
